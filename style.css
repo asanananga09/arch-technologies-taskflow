@@ -1,0 +1,363 @@
+
+/* ==========================================
+   TASKFLOW - TO-DO LIST APPLICATION
+   Developer: Asan Ananga Attia
+   Arch Technologies Internship
+========================================== */
+
+/* 1. GLOBAL STYLING */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #0b1120;
+    --card: #17243d;
+    --input: #0f172a;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --border: #334155;
+    --success: #34d399;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+/* 2. MAIN APPLICATION CONTAINER */
+
+.app-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 3. APPLICATION HEADER */
+
+.app-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.app-header h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -1px;
+}
+
+.app-header p {
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+/* 4. TASK STATISTICS */
+
+.task-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 22px 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-4px);
+}
+
+.summary-card h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.summary-card p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.summary-card:last-child h2 {
+    color: var(--success);
+}
+
+/* 5. ADD TASK FORM */
+
+#task-form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+}
+
+#task-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.input-group {
+    display: flex;
+    gap: 12px;
+}
+
+#task-input {
+    flex: 1;
+    min-width: 0;
+    padding: 15px;
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+}
+
+#task-input::placeholder {
+    color: #64748b;
+}
+
+#task-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+#add-task-btn {
+    padding: 15px 25px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#add-task-btn:hover {
+    background: var(--primary-hover);
+}
+
+/* 6. FILTER BUTTONS */
+
+.task-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background: var(--card);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: white;
+}
+
+.filter-btn.active {
+    background: var(--primary-hover);
+    color: white;
+    border-color: var(--primary-hover);
+}
+
+/* 7. TASK LIST SECTION */
+
+.tasks-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 16px;
+    min-height: 180px;
+}
+
+.tasks-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+#task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Future task items created by JavaScript */
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.task-text {
+    flex: 1;
+    overflow-wrap: anywhere;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+
+.task-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--success);
+    cursor: pointer;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.edit-btn {
+    background: #1e3a5f;
+    color: #93c5fd;
+}
+
+.delete-btn {
+    background: #45232d;
+    color: #fda4af;
+}
+
+.edit-btn:hover {
+    background: #284b79;
+}
+
+.delete-btn:hover {
+    background: #65303f;
+}
+
+/* 8. EMPTY TASK MESSAGE */
+
+#empty-message {
+    text-align: center;
+    color: var(--muted);
+    padding: 30px 10px;
+    font-size: 14px;
+}
+
+/* 9. FOOTER */
+
+.app-footer {
+    margin-top: 35px;
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+}
+
+/* 10. RESPONSIVE DESIGN */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 25px 12px;
+    }
+
+    .app-header h1 {
+        font-size: 36px;
+    }
+
+    .task-summary {
+        gap: 8px;
+    }
+
+    .summary-card {
+        padding: 15px 5px;
+    }
+
+    .summary-card h2 {
+        font-size: 24px;
+    }
+
+    .summary-card p {
+        font-size: 11px;
+    }
+
+    #task-form,
+    .tasks-section {
+        padding: 18px;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    #add-task-btn {
+        width: 100%;
+    }
+
+    .task-filters {
+        flex-wrap: wrap;
+    }
+
+    .task-item {
+        flex-wrap: wrap;
+    }
+
+    .task-actions {
+        margin-left: auto;
+    }
+}
+
+/* 11. ACCESSIBILITY */
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

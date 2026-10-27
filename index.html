@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="TaskFlow is a personal task management app.">
+
+    <title>TaskFlow | To-Do List App</title>
+
+    <!-- Link to our CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app-container">
+
+        <!-- APPLICATION HEADER -->
+        <header class="app-header">
+            <h1>TaskFlow</h1>
+
+            <p>
+                Organise your tasks.
+                Stay productive.
+            </p>
+        </header>
+
+        <!-- TASK STATISTICS -->
+        <section class="task-summary"
+                 aria-label="Task statistics">
+
+            <div class="summary-card">
+                <h2 id="total-tasks">0</h2>
+                <p>Total Tasks</p>
+            </div>
+
+            <div class="summary-card">
+                <h2 id="active-tasks">0</h2>
+                <p>Active Tasks</p>
+            </div>
+
+            <div class="summary-card">
+                <h2 id="completed-tasks">0</h2>
+                <p>Completed</p>
+            </div>
+
+        </section>
+
+        <!-- ADD A NEW TASK -->
+        <form id="task-form">
+
+            <label for="task-input">
+                Add a new task
+            </label>
+
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="task-input"
+                    placeholder="What do you need to do?"
+                    maxlength="120"
+                    required
+                >
+
+                <button type="submit" id="add-task-btn">
+                    Add Task
+                </button>
+            </div>
+
+        </form>
+
+        <!-- FILTER TASKS -->
+        <div class="task-filters"
+             role="group"
+             aria-label="Filter tasks">
+
+            <button
+                type="button"
+                class="filter-btn active"
+                data-filter="all"
+                aria-pressed="true">
+                All
+            </button>
+
+            <button
+                type="button"
+                class="filter-btn"
+                data-filter="active"
+                aria-pressed="false">
+                Active
+            </button>
+
+            <button
+                type="button"
+                class="filter-btn"
+                data-filter="completed"
+                aria-pressed="false">
+                Completed
+            </button>
+
+        </div>
+
+        <!-- TASK LIST -->
+        <section class="tasks-section"
+                 aria-label="Your tasks">
+
+            <h2>My Tasks</h2>
+
+            <ul id="task-list">
+                <!-- JavaScript will add tasks here -->
+            </ul>
+
+            <p id="empty-message">
+                No tasks yet. Add your first task!
+            </p>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <p>
+                Built by Asan Ananga Attia
+            </p>
+
+            <p>
+                Arch Technologies Web Development Internship
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- Link to our JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+</html>
